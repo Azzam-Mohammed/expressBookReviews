@@ -10,5 +10,32 @@ let books = {
       9: {"author": "Honor\u00e9 de Balzac","title": "Le P\u00e8re Goriot", "reviews": {} },
       10: {"author": "Samuel Beckett","title": "Molloy, Malone Dies, The Unnamable, the trilogy", "reviews": {} }
 }
+// Function to get book by ISBN
+function getBookByISBN(isbn) {
+  const book = books[isbn];
+  return book ? book : null;
+}
 
-module.exports=books;
+// Function to get books by author
+function getBooksByAuthor(author) {
+  return Object.values(books).filter(book => book.author.toLowerCase().includes(author.toLowerCase()));
+}
+
+// Function to get books by title
+function getBooksByTitle(title) {
+  return Object.values(books).filter(book => book.title.toLowerCase().includes(title.toLowerCase()));
+}
+
+// Function to get a book's review by ISBN
+function getBookReviewByISBN(isbn) {
+  const book = books[isbn];
+  return book ? book.reviews : null;  // Returns reviews if exist, or null if no reviews
+}
+
+module.exports = {
+  books,
+  getBookByISBN,
+  getBooksByAuthor,
+  getBooksByTitle,
+  getBookReviewByISBN
+};
